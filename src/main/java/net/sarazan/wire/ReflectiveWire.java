@@ -21,6 +21,16 @@ public final class ReflectiveWire {
 
     private ReflectiveWire() {}
 
+    /**
+     * Attempts to intelligently merge fields of two Wire messages.
+     * non-null fields will take priority over null ones.
+     * TODO figure out a sane policy for lists
+     * @param message the message containing updated fields
+     * @param into the old message that will be updated
+     * @param <M> Message subclass
+     * @param <B> Builder class for {@link M}
+     * @return merged Message, or message if into is null
+     */
     @NotNull
     public static <M extends Message, B extends Message.Builder<M>>
     M merge(@NotNull M message, @Nullable M into) {
