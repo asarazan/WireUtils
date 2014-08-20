@@ -23,6 +23,30 @@ public final class ReflectiveWire {
 
     @NotNull
     public static <M extends Message, B extends Message.Builder<M>>
+    M merge(@NotNull M message, @Nullable M into) {
+        if (into == null) return message;
+        B builder = cloneToBuilder(into);
+        Class messageClass = message.getClass();
+        for (Field f : messageClass.getDeclaredFields()) {
+            ProtoField ann = f.getAnnotation(ProtoField.class);
+            if (ann == null) continue;
+            try {
+                Object newValue = f.get(message);
+                if (newValue == null) continue;
+                if (newValue instanceof Message) {
+                    newValue = merge((Message)newValue, (Message)f.get(into));
+                }
+                Method setter = builder.getClass().getDeclaredMethod(f.getName(), f.getType());
+                setter.invoke(builder, newValue);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return builder.build();
+    }
+
+    @NotNull
+    public static <M extends Message, B extends Message.Builder<M>>
     B cloneToBuilder(@NotNull M message) {
         try {
             Class messageClass = message.getClass();

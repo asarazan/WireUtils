@@ -1,0 +1,14 @@
+package net.sarazan.wire.tests.proto;
+
+message TestSubObject {
+    optional string first = 1;
+    optional string second = 2;
+    optional string third = 3;
+}
+
+message TestObject {
+    optional string name = 1;
+    optional int64 age = 2;
+    optional TestSubObject sub = 3;
+}
+
