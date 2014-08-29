@@ -2,7 +2,7 @@ package net.sarazan.wire.tests;
 
 import junit.framework.TestCase;
 
-import net.sarazan.wire.ReflectiveWire;
+import net.sarazan.wire.reflection.ReflectiveWire;
 import net.sarazan.wire.tests.proto.TestObject;
 import net.sarazan.wire.tests.proto.TestObject.Builder;
 import net.sarazan.wire.tests.proto.TestSubObject;

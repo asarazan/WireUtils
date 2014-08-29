@@ -1,4 +1,4 @@
-package net.sarazan.wire;
+package net.sarazan.wire.reflection;
 
 import com.squareup.wire.Message;
 import com.squareup.wire.ProtoField;
