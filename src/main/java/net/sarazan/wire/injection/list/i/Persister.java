@@ -2,8 +2,6 @@ package net.sarazan.wire.injection.list.i;
 
 import com.squareup.wire.Message;
 
-import org.jetbrains.annotations.Nullable;
-
 /**
  * Created by Aaron Sarazan on 8/29/14
  * Copyright(c) 2014 Level, Inc.
@@ -19,7 +17,6 @@ public interface Persister<R extends Message> {
      * Get the latest version of response from disk.
      * @return response
      */
-    @Nullable
     R get();
 
     /**

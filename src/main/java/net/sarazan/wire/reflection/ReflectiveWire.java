@@ -3,9 +3,6 @@ package net.sarazan.wire.reflection;
 import com.squareup.wire.Message;
 import com.squareup.wire.ProtoField;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -31,9 +28,8 @@ public final class ReflectiveWire {
      * @param <B> Builder class for {@link M}
      * @return merged Message, or message if into is null
      */
-    @NotNull
     public static <M extends Message, B extends Message.Builder<M>>
-    M merge(@NotNull M message, @Nullable M into) {
+    M merge(M message, M into) {
         if (into == null) return message;
         B builder = cloneToBuilder(into);
         Class messageClass = message.getClass();
@@ -55,9 +51,8 @@ public final class ReflectiveWire {
         return builder.build();
     }
 
-    @NotNull
     public static <M extends Message, B extends Message.Builder<M>>
-    B cloneToBuilder(@NotNull M message) {
+    B cloneToBuilder(M message) {
         try {
             Class messageClass = message.getClass();
             String messageClassName = message.getClass().getName();
@@ -97,7 +92,6 @@ public final class ReflectiveWire {
         }
     }
 
-    @Nullable
     public static <R extends Message, M extends Message> List<M> getList(R message, String name) {
         if (message == null) return null;
         try {

@@ -9,9 +9,6 @@ import net.sarazan.wire.injection.list.i.Persister;
 import net.sarazan.wire.injection.list.i.WireInjectListener;
 import net.sarazan.wire.reflection.ReflectiveWire;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,31 +30,27 @@ public abstract class WireListInjector<R extends Message, I extends Message> {
 
     public static final String TAG = "ProtoInject";
 
-    @NotNull
     private final Persister<R> mPersister;
 
-    @NotNull
     private final ListExtractor<R, I> mExtractor;
 
-    @NotNull
     private final EqualsPredicate<I> mEquals;
 
-    @Nullable
     private final WireInjectListener<I> mListener;
 
-    protected WireListInjector(@NotNull Persister<R> persister,
-                               @NotNull ListExtractor<R, I> extractor,
-                               @NotNull EqualsPredicate<I> equals,
-                               @Nullable WireInjectListener<I> listener) {
+    protected WireListInjector(Persister<R> persister,
+                               ListExtractor<R, I> extractor,
+                               EqualsPredicate<I> equals,
+                               WireInjectListener<I> listener) {
         mPersister = persister;
         mExtractor = extractor;
         mEquals = equals;
         mListener = listener;
     }
 
-    protected WireListInjector(@NotNull Persister<R> persister,
-                               @NotNull ListExtractor<R, I> extractor,
-                               @NotNull EqualsPredicate<I> equals) {
+    protected WireListInjector(Persister<R> persister,
+                               ListExtractor<R, I> extractor,
+                               EqualsPredicate<I> equals) {
         this(persister, extractor, equals, null);
     }
 
