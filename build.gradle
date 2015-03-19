@@ -1,12 +1,6 @@
 apply plugin: 'java'
 apply plugin: 'maven'
 
-sourceCompatibility = 1.7
-targetCompatibility = 1.7
-
-version = '1.0.6'
-group = 'net.sarazan'
-
 repositories {
     mavenCentral()
 }
@@ -14,11 +8,14 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
 
-    compile 'com.squareup.wire:wire-runtime:1.6.0'
+    compile 'com.squareup.wire:wire-runtime:1.7.0'
 }
 
 uploadArchives {
     repositories.mavenDeployer {
-        repository(url: "file:///Users/asarazan/personal/maven-repository/")
+        pom.groupId     = 'net.sarazan'
+        pom.artifactId  = 'WireUtils'
+        pom.version     = '1.0.7'
+        repository(url: 'file:///' + System.properties['user.home'] + '/personal/maven-repository/')
     }
 }
