@@ -6,19 +6,21 @@ targetCompatibility = 1.7
 
 repositories {
     mavenCentral()
+    maven {
+        url "https://jitpack.io"
+    }
 }
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
-
-    compile 'com.squareup.wire:wire-runtime:1.7.0'
+    compile 'com.github.levelmoney.wire:wire-runtime:wire-1.7.0-level-fix'
 }
 
 uploadArchives {
     repositories.mavenDeployer {
         pom.groupId     = 'net.sarazan'
         pom.artifactId  = 'WireUtils'
-        pom.version     = '1.0.8'
+        pom.version     = '1.0.9'
         repository(url: 'file:///' + System.properties['user.home'] + '/personal/maven-repository/')
     }
 }
