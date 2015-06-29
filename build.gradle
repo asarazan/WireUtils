@@ -11,7 +11,7 @@ repositories {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.squareup.wire:wire-runtime:1.8.0-SNAPSHOT'
+    compile 'com.squareup.wire:wire-runtime:1.8.0'
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }
 
@@ -19,7 +19,7 @@ uploadArchives {
     repositories.mavenDeployer {
         pom.groupId     = 'net.sarazan'
         pom.artifactId  = 'WireUtils'
-        pom.version     = '1.0.11'
+        pom.version     = '1.1'
         repository(url: 'file:///' + System.properties['user.home'] + '/personal/maven-repository/')
     }
 }
